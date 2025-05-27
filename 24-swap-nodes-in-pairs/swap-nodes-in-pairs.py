@@ -12,13 +12,12 @@ class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
 
         c= self.count(head)
-        if c<2:
-            return head
+
+        if c<2:return head
         
         if not head.next: return node
 
-        node=ListNode(head.next.val)
-        node.next=ListNode(head.val)
+        node=ListNode(head.next.val,ListNode(head.val))
         node.next.next= self.swapPairs(head.next.next)
 
         return node
