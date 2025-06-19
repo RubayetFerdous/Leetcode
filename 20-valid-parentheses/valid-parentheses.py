@@ -6,7 +6,7 @@ class Solution:
         for char in s:
 
             if char in dict1:
-                top=stack.pop() if stack else "#"
+                top=stack.pop() if stack else None
                 if top!=dict1[char]: return False
 
             else: stack.append(char)
