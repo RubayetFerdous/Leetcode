@@ -1,20 +1,19 @@
+use std::collections::HashMap;
+
 impl Solution {
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
 
-        let mut list: Vec<i32>=Vec::new();
+        let mut answer=HashMap::new();
 
-        for i in 0..nums.len(){
-            if nums[i+1..nums.len()].contains(&(target-nums[i])){
-                list.push(i as i32);
-                break;
+        for (i, &index) in nums.iter().enumerate(){
+
+            if let Some(&num)=answer.get(&(target-nums[i])){
+                return vec![num as i32, i as i32];
+            }else{
+                answer.insert(index, i);
             }
         }
-        for j in (0..nums.len()).rev(){
-            if nums[0..j].contains(&(target-nums[j])){
-                list.push(j as i32);
-                break;
-            }
-        }
-        return list;
-    }
+
+        vec![]
+}
 }
